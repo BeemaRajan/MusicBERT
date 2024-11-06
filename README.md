@@ -47,7 +47,36 @@ In the MusicBERT paper, the authors discuss previous attempts to apply NLP techn
 * REMI (REpresentation of MIcro-timing): Introduced by Huang and Yang (2020), REMI encodes music in a way that captures temporal information by including bar, position, note duration, chord, and tempo. This model uses multiple tokens to represent various attributes of a single note, such as pitch and timing information, which allows it to capture expressive details. However, REMI's encoding sequence can become quite long, which poses challenges for efficient training and processing with transformers​​.
 * CP (Compound Word): Developed by Hsiao et al. (2021), CP represents musical notes by compressing multiple attributes into a single token, reducing redundancy. The CP encoding combines information about pitch, duration, and velocity into one compound word, thereby shortening the sequence length compared to REMI. This compact approach is more efficient for transformer-based models, though it may lose some expressive details​​.
 
-### How is OctoMIDI different?
+### How is OctupleMIDI different?
 
-![Model_Structure](images/Figure_1-Model_Structure.png)
+![Encoding Methods](images/Figure_2-Encoding_Methods.png)
+
+OctupleMIDI introduces a new way of encoding symbolic music by representing each note as a single “octuple” token containing eight distinct elements: time signature, tempo, bar, position, instrument, pitch, duration, and velocity. This format offers several advantages over REMI and CP:
+
+* Reduced Sequence Length: Each note is represented by one octuple token rather than multiple separate tokens. This reduces the sequence length by approximately four times compared to REMI, making it much more manageable for transformers to process long musical pieces.
+* Complete Note Representation: Unlike CP, which combines attributes into a single compound token, OctupleMIDI maintains each attribute as a separate component within the octuple. This preserves flexibility and allows the model to learn nuanced relationships between elements (e.g., tempo and duration) without losing context.
+* Universal and Adaptable: OctupleMIDI’s format is adaptable across various types of music, supporting diverse genres and structures. It can handle complex music features like time signature changes and varying note durations, making it versatile for a wide range of music applications.
+
+In summary, OctupleMIDI balances the richness of musical information with the efficiency of a shorter sequence, allowing MusicBERT to model complex musical patterns effectively. By addressing the limitations of prior methods, OctupleMIDI provides a streamlined yet comprehensive approach that significantly enhances MusicBERT’s ability to handle symbolic music.
+
+## Bar-Level Masking Strategy
+
+In traditional transformer-based models for NLP, masked language modeling (MLM) is used to train the model by randomly masking certain tokens in a sequence and having the model predict the missing elements. However, applying this token-level masking directly to music presents unique challenges. Music, unlike text, has strong structural dependencies, with patterns that often repeat within a segment, such as a bar. The Bar-Level Masking Strategy introduced in MusicBERT is designed to address these challenges and enable more effective pre-training on symbolic music data.
+
+### Why Token-Level Masking is Insufficient for Music
+
+In symbolic music data, certain attributes, such as time signature, tempo, instrument, and position, often repeat within each bar. For instance, notes within the same bar may share the same tempo, and adjacent notes frequently follow specific harmonic or rhythmic patterns. Traditional token-level masking, which masks individual tokens randomly, can cause information leakage in music data:
+
+* Repetitive Attributes: If only one token representing tempo or time signature is masked in a bar, the model can easily infer the masked token based on adjacent, unmasked tokens within the same bar.
+* Harmonic Structure: Adjacent notes in a bar often follow a predictable harmonic or rhythmic structure. Masking individual tokens may not fully challenge the model to learn these deeper patterns, as it can rely on nearby tokens to predict the masked element.
+
+### How Bar-Level Masking Works
+
+To address these issues, MusicBERT introduces a Bar-Level Masking Strategy that masks all tokens of the same type within a bar (e.g., all pitch tokens or all tempo tokens in a bar). This approach offers several key benefits:
+
+* Reduces Information Leakage: By masking all tokens of the same type within a bar, the model cannot simply rely on adjacent tokens to fill in the blanks. Instead, it must learn to understand and predict based on higher-level musical structure and relationships across bars.
+* Encourages Deeper Pattern Learning: Bar-level masking forces the model to capture contextual information across the entire sequence, as it can no longer rely on within-bar redundancies. This is particularly useful for symbolic music, where understanding longer dependencies (like harmonic progression) is essential.
+* Improves Robustness in Music Prediction: With bar-level masking, MusicBERT is better trained to predict missing elements even in complex musical compositions, improving its capability in tasks like melody completion or accompaniment suggestion.
+
+![Model Structure](images/Figure_1-Model_Structure.png)
 
