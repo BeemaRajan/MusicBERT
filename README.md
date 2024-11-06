@@ -49,4 +49,5 @@ In the MusicBERT paper, the authors discuss previous attempts to apply NLP techn
 
 ### How is OctoMIDI different?
 
+![Model_Structure](images/Figure_1-Model_Structure.png)
 
