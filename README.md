@@ -47,4 +47,6 @@ In the MusicBERT paper, the authors discuss previous attempts to apply NLP techn
 * REMI (REpresentation of MIcro-timing): Introduced by Huang and Yang (2020), REMI encodes music in a way that captures temporal information by including bar, position, note duration, chord, and tempo. This model uses multiple tokens to represent various attributes of a single note, such as pitch and timing information, which allows it to capture expressive details. However, REMI's encoding sequence can become quite long, which poses challenges for efficient training and processing with transformers​​.
 * CP (Compound Word): Developed by Hsiao et al. (2021), CP represents musical notes by compressing multiple attributes into a single token, reducing redundancy. The CP encoding combines information about pitch, duration, and velocity into one compound word, thereby shortening the sequence length compared to REMI. This compact approach is more efficient for transformer-based models, though it may lose some expressive details​​.
 
-How is OctoMIDI different?
+### How is OctoMIDI different?
+
+
