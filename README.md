@@ -173,3 +173,15 @@ Results in comparison to other models:
 
 ![Results of Different Models](images/Table_3.png)
 
+# Citations and Related Works
+
+Ren, Y., Zhu, J., Zhang, X., Sun, M., & Liu, J. (2021). MusicBERT: Symbolic Music Understanding with Large-Scale Pre-Training. arXiv preprint arXiv:2106.05630.
+[Link to Paper](https://arxiv.org/abs/2106.05630)
+
+Liu, Y., Ott, M., Goyal, N., Du, J., Joshi, M., Chen, D., Levy, O., Lewis, M., Zettlemoyer, L., & Stoyanov, V. (2019). RoBERTa: A robustly optimized BERT pretraining approach. arXiv preprint arXiv:1907.11692.
+[Link to Paper](https://arxiv.org/abs/1907.11692)
+
+Huang, Y.-S., & Yang, Y.-H. (2020). Pop Music Transformer: Beat-based Modeling and Generation of Expressive Pop Piano Compositions. In Proceedings of the 28th ACM International Conference on Multimedia (MM '20) (pp. 1180–1188). ACM.
+[Link to Paper](https://arxiv.org/abs/2002.00212)
+
+
