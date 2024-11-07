@@ -5,6 +5,7 @@ Mingliang Zeng, Xu Tan, Rui Wang, Zeqian Ju, Tao Qin, Tie-Yan Liu
 Microsoft Research Asia
 
 [Link to the MusicBERT paper](https://arxiv.org/abs/2106.05630)
+
 [Link to their Github](https://github.com/microsoft/muzic/tree/main/musicbert)
 
 # Table of Contents
