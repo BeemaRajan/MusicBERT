@@ -5,6 +5,19 @@ Mingliang Zeng, Xu Tan, Rui Wang, Zeqian Ju, Tao Qin, Tie-Yan Liu
 Microsoft Research Asia
 
 [Link to the MusicBERT paper](https://arxiv.org/abs/2106.05630)
+[Link to their Github](https://github.com/microsoft/muzic/tree/main/musicbert)
+
+# Table of Contents
+
+- [Introduction: Music is a language](#introduction-music-is-a-language)
+- [Paper Overview](#paper-overview)
+- [Results of these two methods](#results-of-these-two-methods)
+- [Architecture Overview](#architecture-overview)
+- [Critical Analysis](#critical-analysis)
+- [Impact](#impact)
+- [Future Development After MusicBERT](#future-developments-after-musicbert)
+- [Cool Use Case](#cool-use-case)
+- [Citations and Related Works](#citations-and-related-works)
 
 # Introduction: Music is a language
 Music, much like spoken or written language, has its own structure, syntax, and expressive power. Just as sentences are composed of words with specific grammatical rules, musical compositions are built from sequences of notes that adhere to harmonic, rhythmic, and structural patterns. These musical patterns, while often subconscious to listeners, convey emotions, ideas, and moods in ways that feel both universal and deeply personal.
@@ -173,6 +186,57 @@ Results in comparison to other models:
 
 ![Results of Different Models](images/Table_3.png)
 
+# Critical Analysis
+
+## Strengths
+* Efficient and Compact Encoding (OctupleMIDI) - MusicBERT’s OctupleMIDI encoding is a major strength, allowing it to process symbolic music with a more compact representation.
+* Tailored Masking Strategy (Bar-Level Masking) - The Bar-Level Masking strategy sets MusicBERT apart from standard masked language models by addressing music’s repetitive and structured nature.
+
+## Limitations
+* Dependence on Pre-Training Data Quality and Diversity:
+MusicBERT’s performance heavily relies on the quality and diversity of the symbolic music data used during pre-training. While large datasets like Lakh MIDI and GiantMIDI-Piano provide a good starting point, they may not represent all music genres equally or capture the full spectrum of musical styles, instruments, and cultural nuances.
+
+* Challenges with Modeling Long-Term Musical Structure:
+MusicBERT has limitations in modeling very long sequences due to computational and memory constraints. While OctupleMIDI encoding reduces sequence length, long musical pieces with intricate structures (e.g., multi-movement classical symphonies) may still exceed feasible sequence lengths.
+
+# Impact
+## Impact on the Field of AI and Music Understanding
+
+MusicBERT has had a substantial impact by bridging the fields of **natural language processing (NLP) and symbolic music understanding**, demonstrating that the powerful transformer architectures successful in NLP can be adapted for music. 
+
+By treating music as a structured language, it answers a longstanding question in AI: **Can language models be successfully applied to non-linguistic, symbolic data?** Through its successful adaptation of NLP models for symbolic music, MusicBERT has provided a clear affirmative answer. This expands AI’s role in creative and analytical processes, not only in music but potentially in other structured domains. Its importance lies in demonstrating that music, as a highly structured form of expression, can be computationally understood and even generated using the same techniques that were transformative in text processing.
+
+# Future Developments after MusicBERT
+
+Here are some things that came after MusicBERT:
+* Exploration of Alternative Masking Strategies
+
+MusicBERT’s bar-level masking strategy influenced subsequent research in symbolic music representation by highlighting the importance of aligning masking strategies with musical structure. Future works experimented with different masking techniques, including hierarchical or beat-based masking, to capture more granular rhythmic dependencies and improve model performance on complex, polyphonic music.
+
+* Integration of Audio and Symbolic Representations
+
+Building on MusicBERT’s symbolic focus, recent models have explored integrating symbolic representations (like MIDI) with raw audio features. This multimodal approach allows models to leverage both the structured symbolic data and the nuanced dynamics of audio, bridging the gap between music notation and real-world audio signals.
+
+* Cross-Modality Training
+
+Inspired by MusicBERT, some research expanded the architecture to handle additional data types, such as lyrics or visual inputs from music videos, using cross-modality training. This approach allows models to interpret and generate music within richer multimedia contexts.
+
+* Refining Encoding Schemes for Better Expressiveness
+
+OctupleMIDI demonstrated an efficient way to tokenize music, but limitations in capturing expressive details (like dynamics and micro-timing) led to further experimentation with extended tokenization schemes. Researchers have proposed adding additional elements to the tokens to handle finer temporal variations and dynamic expressions, enabling richer musical outputs.
+
+* Adapting to Diverse and Culturally Varied Datasets
+
+New models inspired by MusicBERT aim to generalize better by training on culturally diverse datasets, allowing for applications that recognize and generate music across a wide variety of musical forms and styles. Building on MusicBERT’s architecture, some research has focused on genre-specific fine-tuning, tailoring the model to understand and generate music within particular styles, such as jazz improvisation or electronic dance music, where stylistic nuances are key.
+
+* Incorporating Higher-Level Music Theory and Structure
+
+MusicBERT’s focus on shorter, structurally repetitive elements within bars encouraged further exploration of handling larger, hierarchical musical structures. Newer models have incorporated approaches like hierarchical transformers to better represent long-term dependencies, allowing for the generation of compositions that maintain thematic coherence over extended sequences.
+
+# Cool Use Case
+
+[midiformers Github link](https://github.com/tripathiarpan20/midiformers)
+
 # Citations and Related Works
 
 Ren, Y., Zhu, J., Zhang, X., Sun, M., & Liu, J. (2021). MusicBERT: Symbolic Music Understanding with Large-Scale Pre-Training. arXiv preprint arXiv:2106.05630.
@@ -183,5 +247,3 @@ Liu, Y., Ott, M., Goyal, N., Du, J., Joshi, M., Chen, D., Levy, O., Lewis, M., Z
 
 Huang, Y.-S., & Yang, Y.-H. (2020). Pop Music Transformer: Beat-based Modeling and Generation of Expressive Pop Piano Compositions. In Proceedings of the 28th ACM International Conference on Multimedia (MM '20) (pp. 1180–1188). ACM.
 [Link to Paper](https://arxiv.org/abs/2002.00212)
-
-
