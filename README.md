@@ -16,8 +16,8 @@ Microsoft Research Asia
 - [Critical Analysis](#critical-analysis)
 - [Impact](#impact)
 - [Future Development After MusicBERT](#future-developments-after-musicbert)
-- [Cool Use Case](#cool-use-case)
-- [Citations and Related Works](#citations-and-related-works)
+- [Citation](#citation)
+- [Resource Links](#resource-links)
 
 # Introduction: Music is a language
 Music, much like spoken or written language, has its own structure, syntax, and expressive power. Just as sentences are composed of words with specific grammatical rules, musical compositions are built from sequences of notes that adhere to harmonic, rhythmic, and structural patterns. These musical patterns, while often subconscious to listeners, convey emotions, ideas, and moods in ways that feel both universal and deeply personal.
@@ -29,7 +29,7 @@ In the field of Natural Language Processing (NLP), transformers have revolutioni
 Music, like text, can be broken down into smaller units (such as notes or chords), processed as sequences, and analyzed for patterns, emotions, and styles. This paper explores the exciting potential of using transformer models, widely successful in NLP, to gain deeper insights into music.
 If transformers can understand language by predicting and classifying words, can they do the same for music?
 
-Question 1: What does symbolic music look like?
+**Question 1: What does symbolic music look like?**
 
 hint: Think about how you might "read" music.
 
@@ -81,6 +81,10 @@ OctupleMIDI introduces a new way of encoding symbolic music by representing each
 ![Number of Tokens per Song](images/Table_1.png)
 
 In summary, OctupleMIDI balances the richness of musical information with the efficiency of a shorter sequence, allowing MusicBERT to model complex musical patterns effectively. By addressing the limitations of prior methods, OctupleMIDI provides a streamlined yet comprehensive approach that significantly enhances MusicBERT’s ability to handle symbolic music.
+
+**Question 2: Why might MusicBERT use bar-level masking instead of random masking? What unique characteristics of music does this choice address?**
+
+hint: Imagine learning a dance routine where the steps repeat within each section of the music. You might focus on mastering each small pattern before moving to the next. How does understanding each repeating segment help you follow the entire sequence?
 
 ## Bar-Level Masking Strategy
 
@@ -240,17 +244,19 @@ New models inspired by MusicBERT aim to generalize better by training on cultura
 
 MusicBERT’s focus on shorter, structurally repetitive elements within bars encouraged further exploration of handling larger, hierarchical musical structures. Newer models have incorporated approaches like hierarchical transformers to better represent long-term dependencies, allowing for the generation of compositions that maintain thematic coherence over extended sequences.
 
-# Cool Use Case
-
-[midiformers Github link](https://github.com/tripathiarpan20/midiformers)
-
-# Citations and Related Works
+# Citation
 
 Ren, Y., Zhu, J., Zhang, X., Sun, M., & Liu, J. (2021). MusicBERT: Symbolic Music Understanding with Large-Scale Pre-Training. arXiv preprint arXiv:2106.05630.
 [Link to Paper](https://arxiv.org/abs/2106.05630)
 
-Liu, Y., Ott, M., Goyal, N., Du, J., Joshi, M., Chen, D., Levy, O., Lewis, M., Zettlemoyer, L., & Stoyanov, V. (2019). RoBERTa: A robustly optimized BERT pretraining approach. arXiv preprint arXiv:1907.11692.
-[Link to Paper](https://arxiv.org/abs/1907.11692)
+# Resource Links
 
-Huang, Y.-S., & Yang, Y.-H. (2020). Pop Music Transformer: Beat-based Modeling and Generation of Expressive Pop Piano Compositions. In Proceedings of the 28th ACM International Conference on Multimedia (MM '20) (pp. 1180–1188). ACM.
-[Link to Paper](https://arxiv.org/abs/2002.00212)
+[Cool use case - midiformers Github](https://github.com/tripathiarpan20/midiformers)
+
+[RoBERTa model paper](https://arxiv.org/abs/1907.11692)
+
+[REMI (REpresentation of MIcro-timing)](https://arxiv.org/abs/2002.00212)
+
+[Lakh MIDI Dataset](https://colinraffel.com/projects/lmd/)
+
+[PiRhDy: Learning Pitch-, Rhythm-, and Dynamics-aware Embeddings for Symbolic Music](https://github.com/mengshor/PiRhDy)
